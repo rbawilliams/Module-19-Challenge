@@ -28,6 +28,7 @@
 import streamlit as st
 from crypto_wallet import generate_account, get_balance, send_transaction
 from crypto_wallet import generate_account
+from web3.gas_strategies import medium_gas_price_strategy
 from dataclasses import dataclass
 from typing import Any, List
 from web3 import Web3
