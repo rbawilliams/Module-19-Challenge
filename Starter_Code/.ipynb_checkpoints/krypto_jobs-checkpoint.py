@@ -26,6 +26,8 @@
 ################################################################################
 # Imports
 import streamlit as st
+from crypto_wallet import generate_account, get_balance, send_transaction
+from crypto_wallet import generate_account
 from dataclasses import dataclass
 from typing import Any, List
 from web3 import Web3
@@ -80,7 +82,7 @@ w3 = Web3(Web3.HTTPProvider("HTTP://127.0.0.1:7545"))
 # @TODO:
 # From `crypto_wallet.py import the functions generate_account, get_balance,
 #  and send_transaction
-from cryto_wallet import generate_account, get_balance, send_transaction
+from crypto_wallet import generate_account, get_balance, send_transaction
 
 #st.text
 
@@ -92,28 +94,28 @@ from cryto_wallet import generate_account, get_balance, send_transaction
 candidate_database = {
     "Lane": [
         "Lane",
-        "0xaC8eB8B2ed5C4a0fC41a84Ee4950F417f67029F0",
+        "0x58b810Ac07b62d168722d5C64fA7b0b8da9f42A5",
         "4.3",
         0.20,
         "Images/lane.jpeg",
     ],
     "Ash": [
         "Ash",
-        "0x2422858F9C4480c2724A309D58Ffd7Ac8bF65396",
+        "0xbA8BCB5427c7AE9dDcd4879D4Eb4B78237Ddb199",
         "5.0",
         0.33,
         "Images/ash.jpeg",
     ],
     "Jo": [
         "Jo",
-        "0x8fD00f170FDf3772C5ebdCD90bF257316c69BA45",
+        "0x5A5D6CD9356A90450b68196156BDCCfDA1B01217",
         "4.7",
         0.19,
         "Images/jo.jpeg",
     ],
     "Kendall": [
         "Kendall",
-        "0x8fD00f170FDf3772C5ebdCD90bF257316c69BA45",
+        "0xb98976d850ceb6c5d5181E454721e78c481D208f",
         "4.1",
         0.16,
         "Images/kendall.jpeg",
@@ -158,7 +160,9 @@ st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
 
 # @TODO:
 #  Call the `generate_account` function and save it as the variable `account`
-# account = generate_account()
+
+mnemonic = "trouble grape fury visa sort question above country nuclear fade envelope point"
+account = generate_account(mnemonic)
 
 ##########################################
 
@@ -266,11 +270,13 @@ st.sidebar.markdown("## Total Wage in Ether")
 # Calculate total `wage` for the candidate by multiplying the candidate’s hourly
 # rate from the candidate database (`candidate_database[person][3]`) by the
 # value of the `hours` variable
-wage = hourly_rate * hours
+wage = float(hourly_rate) * hours
 
 # @TODO
 # Write the `wage` calculation to the Streamlit sidebar
-st.sidebar.write(wage)
+st.sidebar.markdown("## Candidate's wage")
+st.sidebar.markdown(str(wage))
+st.sidebar.markdown("---------------")
 
 ##########################################
 # Step 2 - Part 2:

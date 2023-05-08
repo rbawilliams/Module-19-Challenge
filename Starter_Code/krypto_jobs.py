@@ -26,6 +26,8 @@
 ################################################################################
 # Imports
 import streamlit as st
+from crypto_wallet import generate_account, get_balance, send_transaction
+from crypto_wallet import generate_account
 from dataclasses import dataclass
 from typing import Any, List
 from web3 import Web3
@@ -158,6 +160,8 @@ st.sidebar.markdown("## Client Account Address and Ethernet Balance in Ether")
 
 # @TODO:
 #  Call the `generate_account` function and save it as the variable `account`
+
+mnemonic = "trouble grape fury visa sort question above country nuclear fade envelope point"
 account = generate_account(mnemonic)
 
 ##########################################

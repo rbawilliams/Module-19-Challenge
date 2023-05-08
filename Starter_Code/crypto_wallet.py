@@ -22,7 +22,7 @@ from web3.middleware import geth_poa_middleware
 def generate_account(mnemonic):
     """Create a digital wallet and Ethereum account from a mnemonic seed phrase."""
     # Fetch mnemonic from environment variable.
-    envmnemonic = os.getenv(".env")
+    envmnemonic = os.getenv("mnemonic.env")
     print("Mnemonic:", mnemonic)
 
     # Create Wallet Object
@@ -66,7 +66,7 @@ def send_transaction(w3, account, to, wage):
         "to": to,
         "from": account.address,
         "value": value,
-        "gas": gasEstimate,
+        "gas": gas_estimate,
         "gasPrice": 0,
         "nonce": w3.eth.get_transaction_count(account.address),
     }
@@ -78,6 +78,6 @@ def send_transaction(w3, account, to, wage):
     return w3.eth.send_raw_transaction(signed_tx.rawTransaction)
 
 # Pass the mnemonic value as an argument when calling the function
-mnemonic = "blue industry ladder wagon pride okay umbrella soup toilet prison since upper"
+mnemonic = "trouble grape fury visa sort question above country nuclear fade envelope point"
 account = generate_account(mnemonic)
 list
